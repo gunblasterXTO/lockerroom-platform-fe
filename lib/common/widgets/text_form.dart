@@ -6,7 +6,6 @@ class CustomInputText extends StatelessWidget {
   final bool required;
   final TextEditingController controller;
   final String? Function(String?)? validator;
-  final Function(String?)? onSaved;
   final String hint;
   final bool obsecure;
   final double? width;
@@ -15,7 +14,6 @@ class CustomInputText extends StatelessWidget {
       {super.key,
       required this.required,
       required this.controller,
-      required this.onSaved,
       required this.validator,
       required this.hint,
       required this.obsecure,
@@ -29,7 +27,6 @@ class CustomInputText extends StatelessWidget {
       height: height,
       child: TextFormField(
         controller: controller,
-        onSaved: onSaved,
         validator: validator,
         obscureText: obsecure,
         decoration: InputDecoration(

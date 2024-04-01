@@ -32,8 +32,6 @@ class LoginPage extends GetView<LoginController> {
                 CustomInputText(
                   required: true,
                   controller: controller.usernameController,
-                  // onSaved: (value) => controller.username = value!,
-                  onSaved: (value) => {},
                   validator: (value) => controller.validateUsername(value!),
                   hint: 'username',
                   obsecure: false,
@@ -44,8 +42,6 @@ class LoginPage extends GetView<LoginController> {
                 CustomInputText(
                     required: true,
                     controller: controller.passwordController,
-                    // onSaved: (value) => controller.password = value!,
-                    onSaved: (value) => {},
                     validator: (value) => controller.validatePassword(value!),
                     hint: 'password',
                     obsecure: true),
@@ -60,7 +56,11 @@ class LoginPage extends GetView<LoginController> {
                     Expanded(
                         child: CustomElevatedButton(
                             text: 'Login',
-                            onPressed: () => controller.checkLogin())),
+                            onPressed: () {
+                              controller.checkLogin(
+                                  controller.usernameController.text,
+                                  controller.passwordController.text);
+                            })),
                   ],
                 )
               ],
