@@ -5,9 +5,12 @@ import 'package:lockerroom/routes/pages.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
-  runApp(GetMaterialApp(
-    getPages: AppPages.routes,
-    initialRoute: AppPages.initial,
-    theme: customTheme,
-  ));
+  runApp(
+    GetMaterialApp(
+      getPages: AppPages.routes,
+      initialRoute: AppPages.initial,
+      theme: ThemeClass.lightTheme,
+      debugShowCheckedModeBanner: true,
+    ),
+  );
 }

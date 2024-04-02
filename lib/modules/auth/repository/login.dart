@@ -12,11 +12,13 @@ class RemoteLoginRepository {
     final reqJson =
         LoginRequest(username: username, password: password).toJson();
 
-    var response = await http.post(Uri.parse(url),
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: jsonEncode(reqJson));
+    var response = await http.post(
+      Uri.parse(url),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: jsonEncode(reqJson),
+    );
     final Map<String, dynamic> bodyResp = jsonDecode(response.body);
     final resp = LoginResponse.fromJson(response.statusCode, bodyResp);
 

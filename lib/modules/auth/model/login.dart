@@ -14,23 +14,25 @@ class LoginResponseSuccess {
   final String accessToken;
   final String tokenType;
   final num expiresIn;
-  LoginResponseSuccess(
-      {required this.accessToken,
-      required this.tokenType,
-      required this.expiresIn});
+  LoginResponseSuccess({
+    required this.accessToken,
+    required this.tokenType,
+    required this.expiresIn,
+  });
 
   factory LoginResponseSuccess.fromJson(Map<String, dynamic> json) {
     return LoginResponseSuccess(
-        accessToken: json['access_token'],
-        tokenType: json['token_type'],
-        expiresIn: json['expires_in']);
+      accessToken: json['access_token'],
+      tokenType: json['token_type'],
+      expiresIn: json['expires_in'],
+    );
   }
 
   Map<String, dynamic> toJson() {
     return {
       'accessToken': accessToken,
       'tokenType': tokenType,
-      'expiresIn': expiresIn
+      'expiresIn': expiresIn,
     };
   }
 }
@@ -45,11 +47,14 @@ class LoginResponse extends ApiResponse {
   factory LoginResponse.fromJson(int statusCode, Map<String, dynamic> json) {
     if (statusCode >= 200 && statusCode < 300) {
       return LoginResponse(
-          statusCode: statusCode,
-          success: LoginResponseSuccess.fromJson(json['data']));
+        statusCode: statusCode,
+        success: LoginResponseSuccess.fromJson(json['data']),
+      );
     } else {
       return LoginResponse(
-          statusCode: statusCode, fail: FailResponse.fromJson(json));
+        statusCode: statusCode,
+        fail: FailResponse.fromJson(json),
+      );
     }
   }
 }
