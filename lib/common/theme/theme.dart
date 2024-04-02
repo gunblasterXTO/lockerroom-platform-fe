@@ -3,13 +3,13 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lockerroom/common/helper/ui_helper.dart';
 
 class ThemeClass {
-  Color lightPrimaryColor = const Color.fromRGBO(199, 20, 26, 1);
-  Color lightSecondaryColor = Colors.white;
+  Color lightPrimaryColor = UIConst.lightPrimaryColor;
+  Color lightSecondaryColor = UIConst.lightSecondaryColor;
 
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
-    colorScheme: const ColorScheme.light()
-        .copyWith(primary: _themeClass.lightPrimaryColor),
+    scaffoldBackgroundColor: Colors.white,
+
     // Elevated Button Theme //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
@@ -30,5 +30,3 @@ class ThemeClass {
     textTheme: GoogleFonts.poppinsTextTheme(),
   );
 }
-
-ThemeClass _themeClass = ThemeClass();

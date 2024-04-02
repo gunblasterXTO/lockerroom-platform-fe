@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:lockerroom/common/theme/theme.dart';
-
-ThemeClass _themeClass = ThemeClass();
+import 'package:lockerroom/common/helper/ui_helper.dart';
 
 final ButtonStyle primaryElevatedButton = ElevatedButton.styleFrom(
-  backgroundColor: _themeClass.lightPrimaryColor,
-  foregroundColor: _themeClass.lightSecondaryColor,
+  backgroundColor: UIConst.lightPrimaryColor,
+  foregroundColor: UIConst.lightSecondaryColor,
 );
 
 final ButtonStyle secondaryElevatedButton = ElevatedButton.styleFrom(
-  backgroundColor: _themeClass.lightSecondaryColor,
-  foregroundColor: _themeClass.lightPrimaryColor,
+  backgroundColor: UIConst.lightSecondaryColor,
+  foregroundColor: UIConst.lightPrimaryColor,
 );
 
 final TextStyle secondaryTextButton =
-    TextStyle(color: _themeClass.lightSecondaryColor);
+    TextStyle(color: UIConst.lightSecondaryColor);
