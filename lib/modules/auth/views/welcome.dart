@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lockerroom/common/styles/button.dart';
 import 'package:lockerroom/modules/auth/bindings/login.dart';
+import 'package:lockerroom/modules/auth/views/login.dart';
 import 'package:lockerroom/modules/home/home.dart';
 
 import '../../../common/helper/ui_helper.dart';
 import '../../../common/widgets/button.dart';
-import 'login.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});

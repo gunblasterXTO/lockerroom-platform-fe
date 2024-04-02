@@ -9,10 +9,10 @@ part 'routes.dart';
 class AppPages {
   AppPages._();
 
-  static const initial = Routes.welcome;
+  static const initial = Routes.index;
 
   static final routes = [
-    GetPage(name: _Paths.welcome, page: () => const WelcomePage()),
+    GetPage(name: _Paths.index, page: () => const WelcomePage()),
     GetPage(
       name: _Paths.login,
       page: () => const LoginPage(),
