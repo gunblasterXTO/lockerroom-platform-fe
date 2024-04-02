@@ -1,9 +1,34 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:lockerroom/common/helper/ui_helper.dart';
 
-final ThemeData customTheme = ThemeData(
-    textTheme: TextTheme(
-        displayLarge:
-            GoogleFonts.poppins(fontSize: 24), //TODO: fontSize not reflected
-        displayMedium: GoogleFonts.poppins(fontSize: 20),
-        displaySmall: GoogleFonts.poppins(fontSize: 16)));
+class ThemeClass {
+  Color lightPrimaryColor = const Color.fromRGBO(199, 20, 26, 1);
+  Color lightSecondaryColor = Colors.white;
+
+  static ThemeData lightTheme = ThemeData(
+    useMaterial3: true,
+    colorScheme: const ColorScheme.light()
+        .copyWith(primary: _themeClass.lightPrimaryColor),
+    // Elevated Button Theme //
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ButtonStyle(
+        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+          RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(UIConst.circularBorderRadius),
+          ),
+        ),
+        textStyle: MaterialStateProperty.all<TextStyle>(
+          GoogleFonts.poppins(
+            fontSize: 16,
+            fontWeight: FontWeight.normal,
+          ),
+        ),
+        foregroundColor: MaterialStateProperty.all<Color>(Colors.white),
+      ),
+    ),
+    textTheme: GoogleFonts.poppinsTextTheme(),
+  );
+}
+
+ThemeClass _themeClass = ThemeClass();
