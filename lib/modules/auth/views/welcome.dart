@@ -40,23 +40,21 @@ class WelcomePage extends StatelessWidget {
             bottom: 120,
             left: UIConst.pagePaddingHorizontal,
             right: UIConst.pagePaddingHorizontal,
-            child: CustomElevatedButton(
-              text: 'Login',
+            child: ElevatedButton(
               style: primaryElevatedButton,
               onPressed: () =>
                   Get.to(() => const LoginPage(), binding: LoginBinding()),
+              child: const Text('Login'),
             ),
           ),
           Positioned(
             bottom: 60,
             left: UIConst.pagePaddingHorizontal,
             right: UIConst.pagePaddingHorizontal,
-            child: CustomElevatedButton(
-              text: 'Register',
+            child: ElevatedButton(
               style: secondaryElevatedButton,
-              onPressed: () {
-                print("ke hit");
-              },
+              onPressed: () => {print('HIT!')},
+              child: const Text('Register'),
             ),
           ),
           // Continue as guest

@@ -1,30 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:lockerroom/common/helper/ui_helper.dart';
 
-class CustomElevatedButton extends StatelessWidget {
+class CustomTextButton extends StatelessWidget {
   final String text;
-  final VoidCallback onPressed;
-  const CustomElevatedButton({
+  final VoidCallback onTap;
+  final TextStyle? textStyle;
+  const CustomTextButton({
     super.key,
     required this.text,
-    required this.onPressed,
+    required this.onTap,
+    this.textStyle,
   });
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton(
-      onPressed: onPressed,
-      style: ButtonStyle(
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-        RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-              UIConst.circularBorderRadius), // Adjust border radius as needed
-        ),
-      )),
+    return InkWell(
+      onTap: onTap,
       child: Text(
         text,
-        style: context.textTheme.displaySmall,
+        style: textStyle,
       ),
     );
   }
