@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lockerroom/common/styles/button.dart';
-import 'package:lockerroom/modules/auth/bindings/login.dart';
 import 'package:lockerroom/modules/auth/views/login.dart';
+import 'package:lockerroom/modules/auth/views/register.dart';
 import 'package:lockerroom/modules/home/home.dart';
 
 import '../../../common/helper/ui_helper.dart';
@@ -42,8 +42,11 @@ class WelcomePage extends StatelessWidget {
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
               style: primaryElevatedButton,
-              onPressed: () =>
-                  Get.to(() => const LoginPage(), binding: LoginBinding()),
+              onPressed: () => Get.to(
+                () => const LoginPage(),
+                transition: UIConst.clickPageTransition,
+                duration: Duration(milliseconds: UIConst.pageTransition),
+              ),
               child: const Text('Login'),
             ),
           ),
@@ -53,7 +56,10 @@ class WelcomePage extends StatelessWidget {
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
               style: secondaryElevatedButton,
-              onPressed: () => {print('HIT!')},
+              onPressed: () => Get.to(
+                () => const RegisterPage(),
+                transition: UIConst.clickPageTransition,
+              ),
               child: const Text('Register'),
             ),
           ),
@@ -66,7 +72,11 @@ class WelcomePage extends StatelessWidget {
               child: CustomTextButton(
                 text: 'Continue as guest',
                 textStyle: secondaryTextButton,
-                onTap: () => Get.to(() => const HomePage()),
+                onTap: () => Get.to(
+                  () => const HomePage(),
+                  transition: UIConst.clickPageTransition,
+                  duration: Duration(milliseconds: UIConst.pageTransition),
+                ),
               ),
             ),
           ),

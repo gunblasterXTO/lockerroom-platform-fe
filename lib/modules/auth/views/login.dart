@@ -7,11 +7,13 @@ import 'package:lockerroom/common/widgets/form.dart';
 import 'package:lockerroom/modules/auth/controllers/login.dart';
 import 'package:lockerroom/modules/auth/views/register.dart';
 
-class LoginPage extends GetView<LoginController> {
+class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final LoginController c = Get.put(LoginController());
+
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
@@ -35,33 +37,34 @@ class LoginPage extends GetView<LoginController> {
               ),
               Text(
                 'Happy to see you again, ready to ball?',
-                style: context.textTheme.bodySmall,
+                style: context.textTheme.bodySmall!
+                    .copyWith(color: UIConst.disabledTextColor),
               ),
               SizedBox(height: UIConst.bigSizedBoxHeight),
               //Form
               Form(
-                key: controller.loginFormKey,
+                key: c.loginFormKey,
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 child: Column(
                   children: [
                     CustomInputText(
-                      controller: controller.usernameController,
+                      controller: c.usernameController,
                       height: UIConst.formHeight,
                       hint: 'Enter your username',
                       obsecure: false,
                       prefixIcon: const Icon(Icons.person),
                       required: true,
-                      validator: (value) => controller.validateUsername(value!),
+                      validator: (value) => c.validateUsername(value!),
                     ),
                     SizedBox(height: UIConst.formSizedBoxHeight),
                     CustomInputText(
-                      controller: controller.passwordController,
+                      controller: c.passwordController,
                       height: UIConst.formHeight,
                       hint: 'Enter your password',
                       obsecure: true,
                       prefixIcon: const Icon(Icons.lock),
                       required: true,
-                      validator: (value) => controller.validatePassword(value!),
+                      validator: (value) => c.validatePassword(value!),
                     ),
                   ],
                 ),
@@ -76,22 +79,33 @@ class LoginPage extends GetView<LoginController> {
               SizedBox(
                 height: UIConst.formSizedBoxHeight,
               ),
-              Row(
-                children: [
-                  Expanded(
-                    child: ElevatedButton(
-                      style: primaryElevatedButton.copyWith(),
-                      onPressed: () {
-                        controller.checkLogin(
-                          controller.usernameController.text,
-                          controller.passwordController.text,
-                        );
-                      },
-                      child: const Text('Login'),
-                    ),
+              Obx(() {
+                return SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    style: primaryElevatedButton,
+                    onPressed: c.isLoading.value
+                        ? null
+                        : () {
+                            c.checkLogin(
+                              c.usernameController.text,
+                              c.passwordController.text,
+                            );
+                          },
+                    child: c.isLoading.value
+                        ? SizedBox(
+                            width: MediaQuery.of(context).size.width * 0.05,
+                            height: MediaQuery.of(context).size.height * 0.025,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 2,
+                              color: UIConst.lightPrimaryColor,
+                            ),
+                          )
+                        : const Text('Login'),
                   ),
-                ],
-              ),
+                );
+              }),
+
               SizedBox(
                 height: UIConst.formSizedBoxHeight,
               ),
