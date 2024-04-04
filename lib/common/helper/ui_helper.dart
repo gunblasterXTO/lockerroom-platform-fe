@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class UIConst {
   UIConst._();
@@ -6,6 +7,7 @@ class UIConst {
   // Color
   static Color lightPrimaryColor = const Color.fromRGBO(199, 20, 26, 1);
   static Color lightSecondaryColor = Colors.white;
+  static Color disabledTextColor = Colors.grey;
 
   // Size
   static double pagePaddingHorizontal = 20.0;
@@ -16,4 +18,10 @@ class UIConst {
   static double formSizedBoxHeight = 10.0;
   static double formHeight = 75.0;
   static double textFormFieldDecorationPadding = 15.0;
+
+  // Animation
+  static Transition clickButtonTransition = Transition.fadeIn;
+
+  // Time
+  static int pageTransitionDuration = 200; // milliseconds
 }
