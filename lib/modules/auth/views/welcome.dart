@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:lockerroom/common/styles/button.dart';
-import 'package:lockerroom/modules/auth/views/login.dart';
-import 'package:lockerroom/modules/auth/views/register.dart';
-import 'package:lockerroom/modules/home/home.dart';
+import 'package:lockerroom/modules/auth/controllers/welcome.dart';
 
 import '../../../common/helper/ui_helper.dart';
 import '../../../common/widgets/button.dart';
@@ -13,6 +10,8 @@ class WelcomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final WelcomeController c = WelcomeController();
+
     return Scaffold(
       body: Stack(
         children: [
@@ -42,11 +41,7 @@ class WelcomePage extends StatelessWidget {
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
               style: primaryElevatedButton,
-              onPressed: () => Get.to(
-                () => const LoginPage(),
-                transition: UIConst.clickPageTransition,
-                duration: Duration(milliseconds: UIConst.pageTransition),
-              ),
+              onPressed: () => c.navigateToLogin(),
               child: const Text('Login'),
             ),
           ),
@@ -56,10 +51,7 @@ class WelcomePage extends StatelessWidget {
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
               style: secondaryElevatedButton,
-              onPressed: () => Get.to(
-                () => const RegisterPage(),
-                transition: UIConst.clickPageTransition,
-              ),
+              onPressed: () => c.navigateToRegister(),
               child: const Text('Register'),
             ),
           ),
@@ -72,11 +64,7 @@ class WelcomePage extends StatelessWidget {
               child: CustomTextButton(
                 text: 'Continue as guest',
                 textStyle: secondaryTextButton,
-                onTap: () => Get.to(
-                  () => const HomePage(),
-                  transition: UIConst.clickPageTransition,
-                  duration: Duration(milliseconds: UIConst.pageTransition),
-                ),
+                onTap: () => c.navigateToHome(),
               ),
             ),
           ),

@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lockerroom/modules/auth/model/login.dart';
 import 'package:lockerroom/modules/auth/repository/login.dart';
-import 'package:lockerroom/modules/home/home.dart';
+import 'package:lockerroom/routes/pages.dart';
 
 class LoginController extends GetxController {
+  final isLoading = false.obs;
   final GlobalKey<FormState> loginFormKey = GlobalKey<FormState>();
   final RemoteLoginRepository _loginRepository =
       RemoteLoginRepository(url: 'http://10.0.2.2:80/v1/auth/login');
@@ -43,20 +44,36 @@ class LoginController extends GetxController {
     if (!isValid) {
       return;
     }
+
+    isLoading(true);
     LoginResponse response = await _loginRepository.login(username, password);
+    isLoading(false);
+
     switch (response.statusCode) {
       case 200:
-        toHomePage();
+        toRegisterPage();
       default:
         Get.snackbar(
           'Login fail',
           response.fail!.detail,
-          snackPosition: SnackPosition.BOTTOM,
+          snackPosition: SnackPosition.TOP,
         );
     }
   }
 
   void toHomePage() {
-    Get.to(() => const HomePage());
+    Get.offAndToNamed(
+      Routes.home,
+    );
+  }
+
+  void toRegisterPage() {
+    final String prevRoute = Get.routing.previous;
+    if (prevRoute.contains(Routes.register)) {
+      Get.back();
+    }
+    Get.toNamed(
+      Routes.register,
+    );
   }
 }

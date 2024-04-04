@@ -5,7 +5,6 @@ import 'package:lockerroom/common/helper/ui_helper.dart';
 import 'package:lockerroom/common/styles/button.dart';
 import 'package:lockerroom/common/widgets/form.dart';
 import 'package:lockerroom/modules/auth/controllers/login.dart';
-import 'package:lockerroom/modules/auth/views/register.dart';
 
 class LoginPage extends StatelessWidget {
   const LoginPage({super.key});
@@ -105,7 +104,6 @@ class LoginPage extends StatelessWidget {
                   ),
                 );
               }),
-
               SizedBox(
                 height: UIConst.formSizedBoxHeight,
               ),
@@ -121,9 +119,7 @@ class LoginPage extends StatelessWidget {
                       TextSpan(
                         text: "Register",
                         recognizer: TapGestureRecognizer()
-                          ..onTap = () {
-                            Get.to(() => const RegisterPage());
-                          },
+                          ..onTap = () => c.toRegisterPage(),
                         style: context.textTheme.bodyMedium!.copyWith(
                           color: UIConst.lightPrimaryColor,
                           fontWeight: FontWeight.bold,
