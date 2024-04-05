@@ -21,7 +21,7 @@ class ThemeClass {
         ),
         textStyle: MaterialStateProperty.all<TextStyle>(
           GoogleFonts.poppins(
-            fontSize: 16,
+            fontSize: UIConst.setFontSize(16),
             fontWeight: FontWeight.normal,
           ),
         ),

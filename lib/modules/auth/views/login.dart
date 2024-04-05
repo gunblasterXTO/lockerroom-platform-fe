@@ -68,13 +68,6 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              Align(
-                alignment: Alignment.topRight,
-                child: Text(
-                  'Forget password?',
-                  style: context.textTheme.bodyMedium,
-                ),
-              ),
               SizedBox(
                 height: UIConst.formSizedBoxHeight,
               ),

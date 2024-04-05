@@ -36,7 +36,7 @@ class WelcomePage extends StatelessWidget {
           ),
           // Action button
           Positioned(
-            bottom: 120,
+            bottom: UIConst.setHeight(120),
             left: UIConst.pagePaddingHorizontal,
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
@@ -46,7 +46,7 @@ class WelcomePage extends StatelessWidget {
             ),
           ),
           Positioned(
-            bottom: 60,
+            bottom: UIConst.setHeight(60),
             left: UIConst.pagePaddingHorizontal,
             right: UIConst.pagePaddingHorizontal,
             child: ElevatedButton(
@@ -57,9 +57,9 @@ class WelcomePage extends StatelessWidget {
           ),
           // Continue as guest
           Positioned(
-            bottom: 20,
-            left: 0,
-            right: 0,
+            bottom: UIConst.setHeight(20),
+            left: UIConst.setWidth(0),
+            right: UIConst.setWidth(0),
             child: Center(
               child: CustomTextButton(
                 text: 'Continue as guest',
