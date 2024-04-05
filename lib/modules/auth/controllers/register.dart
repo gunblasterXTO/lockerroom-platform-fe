@@ -1,8 +1,10 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lockerroom/modules/auth/model/register.dart';
 import 'package:lockerroom/modules/auth/repository/register.dart';
-import 'package:lockerroom/modules/auth/views/login.dart';
+import 'package:lockerroom/modules/auth/widgets/dialog.dart';
 import 'package:lockerroom/routes/pages.dart';
 
 class RegisterController extends GetxController {
@@ -50,7 +52,11 @@ class RegisterController extends GetxController {
     return null;
   }
 
-  void checkRegister(String username, String email, String password) async {
+  void checkRegister(
+    String username,
+    String email,
+    String password,
+  ) async {
     final isValid = registerFormKey.currentState!.validate();
     if (!isValid) {
       return;
@@ -59,8 +65,14 @@ class RegisterController extends GetxController {
     RegisterResponse response =
         await _registerRepository.register(username, email, password);
     switch (response.statusCode) {
-      case 201:
-        Get.to(() => const LoginPage());
+      case HttpStatus.created:
+        Get.dialog(const SuccessRegisterDialog());
+        await Future.delayed(
+          const Duration(seconds: 1),
+        );
+        Get.offAndToNamed(
+          Routes.login,
+        );
       default:
         Get.snackbar(
           'Register fail',

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lockerroom/modules/auth/model/login.dart';
@@ -50,8 +52,8 @@ class LoginController extends GetxController {
     isLoading(false);
 
     switch (response.statusCode) {
-      case 200:
-        toRegisterPage();
+      case HttpStatus.ok:
+        toHomePage();
       default:
         Get.snackbar(
           'Login fail',
@@ -62,7 +64,7 @@ class LoginController extends GetxController {
   }
 
   void toHomePage() {
-    Get.offAndToNamed(
+    Get.offAllNamed(
       Routes.home,
     );
   }
