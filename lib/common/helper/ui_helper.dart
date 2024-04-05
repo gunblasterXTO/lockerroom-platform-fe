@@ -8,6 +8,8 @@ class UIConst {
   static Color lightPrimaryColor = const Color.fromRGBO(199, 20, 26, 1);
   static Color lightSecondaryColor = Colors.white;
   static Color disabledTextColor = Colors.grey;
+  static Color errorWidgetBackground = const Color.fromARGB(255, 255, 130, 130);
+  static Color errorWidgetText = Colors.white;
 
   // Size
   static double pagePaddingHorizontal = 20.0;

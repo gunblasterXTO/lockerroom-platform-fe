@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lockerroom/common/widgets/snackbar.dart';
 import 'package:lockerroom/modules/auth/model/register.dart';
 import 'package:lockerroom/modules/auth/repository/register.dart';
 import 'package:lockerroom/modules/auth/widgets/dialog.dart';
@@ -62,23 +63,23 @@ class RegisterController extends GetxController {
       return;
     }
 
-    RegisterResponse response =
-        await _registerRepository.register(username, email, password);
-    switch (response.statusCode) {
-      case HttpStatus.created:
-        Get.dialog(const SuccessRegisterDialog());
-        await Future.delayed(
-          const Duration(seconds: 1),
-        );
-        Get.offAndToNamed(
-          Routes.login,
-        );
-      default:
-        Get.snackbar(
-          'Register fail',
-          response.fail!.detail,
-          snackPosition: SnackPosition.TOP,
-        );
+    try {
+      RegisterResponse response =
+          await _registerRepository.register(username, email, password);
+      switch (response.statusCode) {
+        case HttpStatus.created:
+          Get.dialog(const SuccessRegisterDialog());
+          await Future.delayed(
+            const Duration(seconds: 1),
+          );
+          Get.offAndToNamed(
+            Routes.login,
+          );
+        default:
+          errorSnackBar('Register fail', response.fail!.detail);
+      }
+    } catch (e) {
+      errorSnackBar('Register fail', e.toString());
     }
   }
 

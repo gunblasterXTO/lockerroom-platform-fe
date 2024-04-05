@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lockerroom/common/widgets/snackbar.dart';
 import 'package:lockerroom/modules/auth/model/login.dart';
 import 'package:lockerroom/modules/auth/repository/login.dart';
 import 'package:lockerroom/routes/pages.dart';
@@ -47,19 +48,20 @@ class LoginController extends GetxController {
       return;
     }
 
-    isLoading(true);
-    LoginResponse response = await _loginRepository.login(username, password);
-    isLoading(false);
+    try {
+      isLoading(true);
+      LoginResponse response = await _loginRepository.login(username, password);
+      isLoading(false);
 
-    switch (response.statusCode) {
-      case HttpStatus.ok:
-        toHomePage();
-      default:
-        Get.snackbar(
-          'Login fail',
-          response.fail!.detail,
-          snackPosition: SnackPosition.TOP,
-        );
+      switch (response.statusCode) {
+        case HttpStatus.ok:
+          toHomePage();
+        default:
+          errorSnackBar('Login fail', response.fail!.detail);
+      }
+    } catch (e) {
+      isLoading(false);
+      errorSnackBar('Login fail', e.toString());
     }
   }
 
