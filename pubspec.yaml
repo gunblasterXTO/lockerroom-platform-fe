@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  flutter_screenutil: 5.9.0
   get: 4.6.6
   google_fonts: 4.0.4
   hexcolor: 3.0.1
