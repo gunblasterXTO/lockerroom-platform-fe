@@ -3,13 +3,10 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:lockerroom/common/helper/ui_helper.dart';
 
 class ThemeClass {
-  Color lightPrimaryColor = UIConst.lightPrimaryColor;
-  Color lightSecondaryColor = UIConst.lightSecondaryColor;
-
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: Colors.white,
-
+    appBarTheme: AppBarTheme(backgroundColor: UIConst.lightSecondaryColor),
     // Elevated Button Theme //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(

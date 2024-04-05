@@ -18,6 +18,10 @@ class AppPages {
     GetPage(
       name: Routes.index,
       page: () => const WelcomePage(),
+      transition: UIConst.clickButtonTransition,
+      transitionDuration: Duration(
+        milliseconds: UIConst.pageTransitionDuration,
+      ),
     ),
     GetPage(
       name: Routes.login,
