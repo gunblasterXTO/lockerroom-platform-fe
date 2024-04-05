@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:lockerroom/common/helper/ui_helper.dart';
 import 'package:lockerroom/modules/auth/views/login.dart';
 import 'package:lockerroom/modules/auth/views/register.dart';
-import 'package:lockerroom/modules/auth/views/test.dart';
 import 'package:lockerroom/modules/auth/views/welcome.dart';
 import 'package:lockerroom/modules/home/home.dart';
 
@@ -14,7 +13,6 @@ class AppPages {
   static const initial = Routes.index;
 
   static final routes = [
-    GetPage(name: Routes.test, page: () => const TestPage()), // TODO: remove
     GetPage(
       name: Routes.index,
       page: () => const WelcomePage(),
