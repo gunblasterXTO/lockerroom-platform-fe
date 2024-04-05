@@ -6,7 +6,11 @@ class ThemeClass {
   static ThemeData lightTheme = ThemeData(
     useMaterial3: true,
     scaffoldBackgroundColor: Colors.white,
-    appBarTheme: AppBarTheme(backgroundColor: UIConst.lightSecondaryColor),
+    appBarTheme: const AppBarTheme(
+      backgroundColor: Colors.white,
+      elevation: 0,
+      surfaceTintColor: Colors.white,
+    ),
     // Elevated Button Theme //
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
