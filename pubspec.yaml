@@ -27,3 +27,4 @@ flutter:
   uses-material-design: true
   assets:
     - assets/welcome.jpg
+    - assets/email_confirmed.png
